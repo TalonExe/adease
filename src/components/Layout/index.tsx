@@ -1,6 +1,5 @@
 import SideNav from "../SideNav"
 
-SideNav
 const Layout = () => {
   return (
     <main>
