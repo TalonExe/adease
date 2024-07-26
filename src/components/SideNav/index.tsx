@@ -7,6 +7,7 @@ import {
   IconCircleLetterW,
   IconContract,
   IconSettings,
+  IconMessageChatbot
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -41,6 +42,15 @@ const SideNav = () => {
         <IconContract className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
+    {
+      label: "Automation",
+      href: "#",
+      icon: (
+        <IconMessageChatbot className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+
+    
   ];
 
   const [open, setOpen] = useState(false);
