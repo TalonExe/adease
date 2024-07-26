@@ -1,10 +1,10 @@
 import SideNav from "../SideNav"
 
-SideNav
-const Layout = () => {
+const Layout = ({children} : {children:React.ReactNode}) => {
   return (
-    <main>
+    <main className="flex flex-row">
       <SideNav/>
+      {children}
     </main>
   )
 }

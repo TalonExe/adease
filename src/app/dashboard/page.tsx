@@ -3,8 +3,10 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      <Layout/>
+    <div className='flex flex-row'>
+      <Layout>
+        Hi
+      </Layout>
     </div>
   )
 }
