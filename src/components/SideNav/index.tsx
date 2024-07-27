@@ -70,7 +70,7 @@ const SideNav = () => {
           <SidebarLink
             link={{
               label: "Settings",
-              href: "#",
+              href: "/settings",
               icon: (
                 <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
               ),
@@ -114,7 +114,7 @@ export const LogoIcon = () => {
     >
       <div className="h-10 w-12">
         <img
-          src="\adEaseLogo.png"
+          src="./adEaseLogo.png"
           alt="Logo"
           className="h-full w-full object-contain rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm"
         />
@@ -123,32 +123,6 @@ export const LogoIcon = () => {
         AdEase
       </span>
     </Link>
-  );
-};
-
-// Dummy dashboard component with content
-const Dashboard = () => {
-  return (
-    <div className="flex flex-1">
-      <div className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="flex gap-2">
-          {[...new Array(4)].map((i) => (
-            <div
-              key={"first-array" + i}
-              className="h-20 w-full rounded-lg  bg-gray-100 dark:bg-neutral-800 animate-pulse"
-            ></div>
-          ))}
-        </div>
-        <div className="flex gap-2 flex-1">
-          {[...new Array(2)].map((i) => (
-            <div
-              key={"second-array" + i}
-              className="h-full w-full rounded-lg  bg-gray-100 dark:bg-neutral-800 animate-pulse"
-            ></div>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 };
 
