@@ -15,7 +15,7 @@ import PieChartDemo from "@/components/Charts/PieChart"
  
 function Dashboard() {
   return (
-    <BentoGrid className="max-w-4xl mx-auto">
+    <BentoGrid className="max-w-8xl mx-auto h-full w-full">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -30,7 +30,9 @@ function Dashboard() {
   );
 }
 const Skeleton = ({children} : {children:React.ReactNode} ) => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">{children}</div>
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+    {children}
+  </div>
 );
 const items = [
   {
@@ -39,13 +41,6 @@ const items = [
     header:
     <Skeleton>
       <PieChartDemo/>
-      <button>hi</button>
-      <button>hi</button>
-      <button>hi</button>
-      <button>hi</button>
-      <button>hi</button>
-      <button>hi</button>
-      <button>hi</button>
     </Skeleton>,
     
     icon: <IconEye className="h-4 w-4 text-neutral-500" />,
