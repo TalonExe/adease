@@ -1,39 +1,58 @@
-
-"use client"
 import React, {useState} from 'react';
-import {DndContext, DragEndEvent} from '@dnd-kit/core';
+import {DndContext, DragEndEvent, DragMoveEvent, UniqueIdentifier} from '@dnd-kit/core';
 
-import Droppable from '@/components/ui/Droppable';
-import Draggable from "@/components/ui/Draggable";
+import {Droppable} from '@/components/ui/Droppable';
+import {Draggable} from '@/components/ui/Draggable';
 
 function Dnd() {
-
-  const [isDropped, setIsDropped] = useState(false);
+  const containers = ['A', 'B', 'C'];
+  const [parent, setParent] = useState<UniqueIdentifier>();
+  const [child, setChild] = useState()
+  
   const draggableMarkup = (
-    <div className='w-full h-full border-solid border-2 flex justify-center items-center'>
-      <Draggable>
-      Drag me
-    </Draggable>
-    </div>
+    [{
+      id: 1,
+      element:<Draggable key="1" id="1">Drag me</Draggable>,
+      parent: 'A'
+    },
+    {
+      id: 2,
+      element:<Draggable key="2" id="2">Drag me</Draggable>,
+      parent: 'A'
+    },
+    {
+      id: 3,
+      element:<Draggable key="3" id="3">Drag me</Draggable>,
+      parent: 'A'
+    },
+    ]
+      
     
   );
-  
+
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className='flex flex-row h-full w-full border-solid border-2 justify-center items-center'>
-        {draggableMarkup}
-      <Droppable>
-        {isDropped ? draggableMarkup : 'Drop here'}
-      </Droppable>
-      </div>
-      
+      {parent === undefined ? draggableMarkup.map((d)=> d.element) : undefined}
+
+      {containers.map((id) => (
+        // We updated the Droppable component so it would accept an `id`
+        // prop and pass it to `useDroppable`
+        <Droppable key={id} id={id}>
+          {parent === id ? draggableMarkup.map((d)=> d.element) : 'Drop here'}
+        </Droppable>
+      ))}
     </DndContext>
   );
-  
-  function handleDragEnd(event: DragEndEvent) {
-    if (event.over && event.over.id === 'droppable') {
-      setIsDropped(true);
-    }
-  }}
 
-  export default Dnd
+  function handleDragEnd(event : DragEndEvent) {
+    const {over} = event;
+
+    // If the item is dropped over a container, set it as the parent
+    // otherwise reset the parent to `null`
+    console.log(over);
+    
+    setParent(over ? over.id : undefined);
+  }
+};
+
+export default Dnd

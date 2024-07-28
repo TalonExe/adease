@@ -1,11 +1,9 @@
-
-"use client"
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
 
-function Droppable(props) {
+export function Droppable(props) {
   const { isOver, setNodeRef } = useDroppable({
-    id: 'droppable',
+    id: props.id,
   });
   const style = {
     color: isOver ? 'green' : undefined,
@@ -13,11 +11,8 @@ function Droppable(props) {
 
 
   return (
-    <div ref={setNodeRef} style={style} className='w-full h-full flex justify-center items-center'>
+    <div ref={setNodeRef} style={style}>
       {props.children}
     </div>
   );
 }
-
-
-export default Droppable

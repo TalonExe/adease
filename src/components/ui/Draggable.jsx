@@ -1,11 +1,9 @@
-
-"use client"
 import React from 'react';
 import { useDraggable } from '@dnd-kit/core';
 
-function Draggable(props) {
+export function Draggable(props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: 'draggable',
+    id: props.id,
   });
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -13,10 +11,8 @@ function Draggable(props) {
 
 
   return (
-    <button ref={setNodeRef} style={style} {...listeners} {...attributes} className='h-fit w-fit p-2 bg-black text-white rounded-md' onClick={() => console.log("hi")}>
+    <button ref={setNodeRef} style={style} {...listeners} {...attributes} className='p-4 bg-black text-white'>
       {props.children}
     </button>
   );
 }
-
-export default Draggable
