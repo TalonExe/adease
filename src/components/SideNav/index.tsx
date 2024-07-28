@@ -23,7 +23,7 @@ const SideNav = () => {
     },
     {
       label: "Landing Page Generator",
-      href: "#",
+      href: "/Landing_Page_Generator",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -44,11 +44,12 @@ const SideNav = () => {
     },
     {
       label: "Automation",
-      href: "#",
+      href: "/automation",
       icon: (
         <IconMessageChatbot className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
+    
 
     
   ];
