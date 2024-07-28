@@ -37,7 +37,6 @@ const page = () => {
     </textarea>
 
   return (
-    <div className='flex '>
       <Layout>
         <div className="flex flex-col items-start my-4 p-4 h-full w-full">
             <div className="flex flex-row px-8 w-full">
@@ -70,7 +69,6 @@ const page = () => {
             
         </div>
       </Layout>
-    </div>
   )
 }
 
