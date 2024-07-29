@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { IconCopy } from "@tabler/icons-react";
 import Badge from "@/components/ui/Badge";
 
-const page = () => {
+const Page = () => {
   const [word, setWord] = useState("");
   const [keywords, setKeywords] = useState([
     "blue",
@@ -30,7 +30,7 @@ const page = () => {
     <div className="px-4 py-4 bg-neutral-100 dark:bg-neutral-800 mx-8 h-full mb-8 w-11/12 mr-8 ">
       <div className="h-fit flex flex-row flex-wrap">
         {keywords.map((keyword) => {
-          return <Badge title={keyword} />;
+          return <Badge title={keyword} key={keyword} />;
         })}
       </div>
     </div>
@@ -87,4 +87,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
