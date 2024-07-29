@@ -30,7 +30,7 @@ const chartConfig = {
 
 export function Barchart() {
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer config={chartConfig} className="w-full">
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis

@@ -17,13 +17,16 @@ const Page = () => {
   const [color, setColor] = useState(0);
 
   const buttonList = [
-    <Button key={1} className={`w-full bg-black`}>
+    <Button key={0} className={`w-full bg-black`}>
       Sign in
     </Button>,
-    <Button key={2} className={`w-full bg-green`}>
+    <Button key={1} className={`w-full bg-green-400`}>
       Sign in
     </Button>,
-    <Button key={3} className={`w-full bg-purple`}>
+    <Button key={2} className={`w-full bg-purple-600`}>
+      Sign in
+    </Button>,
+    <Button key={3} className={`w-full bg-purple-600`}>
       Sign in
     </Button>,
   ];
@@ -43,9 +46,13 @@ const Page = () => {
   return (
     <Layout>
       <div className="p-4 px-8 my-4 w-full h-full">
-        <span className="font-sans font-bold text-2xl p-2">
-          Landing Page Generator
-        </span>
+        <div className="flex w-full justify-between">
+          <span className="font-sans font-bold text-2xl p-2">
+            Landing Page Generator
+          </span>
+          <Button>Submit</Button>
+        </div>
+
         <div className="flex flex-col h-full w-full justify-center items-center bg-bg bg-cover">
           <Card className="w-full max-w-sm flex flex-col justify-stretch">
             <CardHeader>
@@ -75,7 +82,7 @@ const Page = () => {
             <Button onClick={handlePrev} disabled={color == 0}>
               prev
             </Button>
-            <Button onClick={handleNext} disabled={color == 2}>
+            <Button onClick={handleNext} disabled={color == 3}>
               next
             </Button>
           </div>

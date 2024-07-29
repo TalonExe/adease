@@ -30,7 +30,7 @@ const chartConfig = {
 
 export function Linechart() {
   return (
-    <ChartContainer config={chartConfig} className="w-[90%] h-fit">
+    <ChartContainer config={chartConfig} className="w-[60%] h-full">
       <LineChart
         accessibilityLayer
         data={chartData}

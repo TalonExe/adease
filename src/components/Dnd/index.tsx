@@ -27,7 +27,7 @@ function Dnd() {
       id: 1,
       element: (
         <Draggable key="1" id="1">
-          Send Email using email
+          Send Email
         </Draggable>
       ),
       parent: "Z",
@@ -36,7 +36,7 @@ function Dnd() {
       id: 2,
       element: (
         <Draggable key="2" id="2">
-          Survey submitted
+          Submit Survey
         </Draggable>
       ),
       parent: "Z",
@@ -108,7 +108,7 @@ function Dnd() {
       id: 10,
       element: (
         <Draggable key="10" id="10">
-          WAIT Function
+          WAIT Function
         </Draggable>
       ),
       parent: "Z",
@@ -118,19 +118,22 @@ function Dnd() {
   return (
     <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="flex h-full w-full justify-center items-center">
-        <div className="h-full w-full flex justify-center items-center">
+        <div className="h-full w-full flex justify-center items-center border-solid border-[0.5px]">
           <Droppable key="Z" id="Z">
-            <div className="flex flex-col h-full w-full justify-center items-center gap-4">
+            <div className="flex flex-col h-full w-full justify-center items-start gap-4">
               {buttonList.filter((d) => d.parent == "Z").map((d) => d.element)}
             </div>
           </Droppable>
         </div>
 
-        <div className=" flex flex-col h-full w-full justify-center items-center bg-slate-500">
+        <div className=" flex flex-col h-full w-full justify-center items-center border-solid border-[0.5px] gap-4">
           {containers.map((id) => (
             // We updated the Droppable component so it would accept an `id`
             // prop and pass it to `useDroppable`
-            <div key={id} className="p-4 bg-gray-50">
+            <div
+              key={id}
+              className="p-8 bg-gray-50 h-28 w-56 flex justify-start items-center"
+            >
               <Droppable key={id} id={id}>
                 Drag Here
                 {buttonList.filter((d) => d.parent == id).map((d) => d.element)}
