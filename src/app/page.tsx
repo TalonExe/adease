@@ -1,11 +1,7 @@
+"use server";
 
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-
-        <div>
-          Hi this is main
-        </div>
-    );
+export default async function Home() {
+  return redirect("/dashboard");
 }
-
