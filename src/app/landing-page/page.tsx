@@ -14,8 +14,32 @@ import Layout from "@/components/Layout";
 import React, { useState } from "react";
 
 const Page = () => {
-  const colors = ["#2f27ce", "#3fd988", "#7c5bb4"];
   const [color, setColor] = useState(0);
+
+  const buttonList = [
+    <Button key={1} className={`w-full bg-black`}>
+      Sign in
+    </Button>,
+    <Button key={2} className={`w-full bg-green`}>
+      Sign in
+    </Button>,
+    <Button key={3} className={`w-full bg-purple`}>
+      Sign in
+    </Button>,
+  ];
+
+  const [colors, setColors] = useState(buttonList[0]); // Set initial color
+
+  const handlePrev = () => {
+    const newColorIndex = (color - 1 + buttonList.length) % buttonList.length; // Wrap around
+    setColor(newColorIndex);
+    setColors(buttonList[newColorIndex]);
+  };
+
+  const handleNext = () => {
+    setColor((color + 1) % buttonList.length);
+    setColors(buttonList[color]);
+  };
   return (
     <Layout>
       <div className="p-4 px-8 my-4 w-full h-full">
@@ -44,24 +68,14 @@ const Page = () => {
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" required />
               </div>
+              {colors}
             </CardContent>
-            <CardFooter>
-              <Button className={`w-full bg-[${colors[color]}] text-white`}>
-                Sign in
-              </Button>
-            </CardFooter>
           </Card>
           <div className="flex flex-row p-4 gap-4">
-            <Button
-              onClick={() => setColor((d) => d - 1)}
-              disabled={color == 0}
-            >
+            <Button onClick={handlePrev} disabled={color == 0}>
               prev
             </Button>
-            <Button
-              onClick={() => setColor((d) => d + 1)}
-              disabled={color == 2}
-            >
+            <Button onClick={handleNext} disabled={color == 2}>
               next
             </Button>
           </div>

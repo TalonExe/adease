@@ -18,16 +18,16 @@ type markup = {
 
 function Dnd() {
   const containers = ["A", "B", "C"];
-  const [parent, setParent] = useState<UniqueIdentifier>();
+  const [parent, setParent] = useState<UniqueIdentifier | undefined>("Z");
   const [child, setChild] = useState<markup[]>([
-    { id: "", element: <></>, parent: "" },
+    { id: "", element: <></>, parent: "Z" },
   ]);
   const [buttonList, setButtonList] = useState<markup[]>([
     {
       id: 1,
       element: (
         <Draggable key="1" id="1">
-          Drag me
+          Send Email using email
         </Draggable>
       ),
       parent: "Z",
@@ -36,7 +36,7 @@ function Dnd() {
       id: 2,
       element: (
         <Draggable key="2" id="2">
-          Drag me
+          Survey submitted
         </Draggable>
       ),
       parent: "Z",
@@ -45,7 +45,70 @@ function Dnd() {
       id: 3,
       element: (
         <Draggable key="3" id="3">
-          Drag me
+          send WhatsApp using number
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 4,
+      element: (
+        <Draggable key="4" id="4">
+          Send Google Calender Booking Link
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 5,
+      element: (
+        <Draggable key="5" id="5">
+          Send Webhook
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 6,
+      element: (
+        <Draggable key="6" id="6">
+          Send to Google Sheet
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 7,
+      element: (
+        <Draggable key="7" id="7">
+          Send to ChatGPT
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 8,
+      element: (
+        <Draggable key="8" id="8">
+          IF function
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 9,
+      element: (
+        <Draggable key="9" id="9">
+          LOOP Function
+        </Draggable>
+      ),
+      parent: "Z",
+    },
+    {
+      id: 10,
+      element: (
+        <Draggable key="10" id="10">
+          WAIT Function
         </Draggable>
       ),
       parent: "Z",
@@ -54,19 +117,28 @@ function Dnd() {
 
   return (
     <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-      <Droppable key="Z" id="Z">
-        {buttonList.filter((d) => d.parent == "Z").map((d) => d.element)}
-      </Droppable>
+      <div className="flex h-full w-full justify-center items-center">
+        <div className="h-full w-full flex justify-center items-center">
+          <Droppable key="Z" id="Z">
+            <div className="flex flex-col h-full w-full justify-center items-center gap-4">
+              {buttonList.filter((d) => d.parent == "Z").map((d) => d.element)}
+            </div>
+          </Droppable>
+        </div>
 
-      {containers.map((id) => (
-        // We updated the Droppable component so it would accept an `id`
-        // prop and pass it to `useDroppable`
-
-        <Droppable key={id} id={id}>
-          Drag Here
-          {buttonList.filter((d) => d.parent == id).map((d) => d.element)}
-        </Droppable>
-      ))}
+        <div className=" flex flex-col h-full w-full justify-center items-center bg-slate-500">
+          {containers.map((id) => (
+            // We updated the Droppable component so it would accept an `id`
+            // prop and pass it to `useDroppable`
+            <div key={id} className="p-4 bg-gray-50">
+              <Droppable key={id} id={id}>
+                Drag Here
+                {buttonList.filter((d) => d.parent == id).map((d) => d.element)}
+              </Droppable>
+            </div>
+          ))}
+        </div>
+      </div>
     </DndContext>
   );
 
